@@ -28,6 +28,8 @@ import app.cookyourbooks.model.Unit;
 import app.cookyourbooks.model.VagueIngredient;
 import app.cookyourbooks.repository.RecipeCollectionRepository;
 import app.cookyourbooks.repository.RecipeRepository;
+import app.cookyourbooks.services.parsing.IngredientParser;
+import app.cookyourbooks.services.parsing.RecipeTextParser;
 
 /**
  * Implementation of {@link RecipeService}.

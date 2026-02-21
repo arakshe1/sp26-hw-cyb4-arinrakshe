@@ -1,4 +1,4 @@
-package app.cookyourbooks.services;
+package app.cookyourbooks.services.parsing;
 
 import java.util.Locale;
 import java.util.Optional;
@@ -33,7 +33,7 @@ import app.cookyourbooks.model.VagueIngredient;
  * "a"/"an" produces a {@link MeasuredIngredient}. Other lines without a leading number produce a
  * {@link VagueIngredient}.
  */
-class IngredientParser {
+public class IngredientParser {
 
   // For ranges specifically: "N-M ..."
   private static final Pattern RANGE_PATTERN =
@@ -55,7 +55,7 @@ class IngredientParser {
    * @param line the ingredient text (must not be null)
    * @return the parsed ingredient
    */
-  static Ingredient parse(String line) {
+  public static Ingredient parse(String line) {
     String trimmed = line.trim();
     if (trimmed.isEmpty()) {
       return new VagueIngredient(trimmed, null, null, null);

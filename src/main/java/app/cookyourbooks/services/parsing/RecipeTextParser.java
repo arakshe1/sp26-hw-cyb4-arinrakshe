@@ -1,4 +1,4 @@
-package app.cookyourbooks.services;
+package app.cookyourbooks.services.parsing;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,7 @@ import app.cookyourbooks.model.Ingredient;
 import app.cookyourbooks.model.Instruction;
 import app.cookyourbooks.model.Recipe;
 import app.cookyourbooks.model.Servings;
+import app.cookyourbooks.services.ParseException;
 
 /**
  * Parses plain-text recipe strings into {@link Recipe} objects.
@@ -37,7 +38,7 @@ import app.cookyourbooks.model.Servings;
  *   <li>A {@link ParseException} is thrown only when no non-blank title can be found
  * </ul>
  */
-class RecipeTextParser {
+public class RecipeTextParser {
 
   private static final Pattern SERVINGS_PATTERN =
       Pattern.compile(
@@ -63,7 +64,7 @@ class RecipeTextParser {
    * @return the parsed recipe (never null)
    * @throws ParseException if the text is empty/blank or cannot produce a title
    */
-  static Recipe parse(String text) throws ParseException {
+  public static Recipe parse(String text) throws ParseException {
     String[] lines = text.split("\n", -1);
 
     String title = null;
@@ -107,8 +108,6 @@ class RecipeTextParser {
             if (title == null) {
               // If we haven't seen a title yet, treat as title-less case – we still need a title
               // But per spec, servings line is not the title; title = first non-blank line.
-              // So if this happens to be the first line, it's the title (unusual but handled).
-              // Actually spec says: "Lines matching 'Makes N', 'Serves N' set the servings".
               // The first non-blank line is always the title. So if a servings line appears
               // after the title, we parse it as servings.
               // If it appears BEFORE any title, it still might be the title of the recipe

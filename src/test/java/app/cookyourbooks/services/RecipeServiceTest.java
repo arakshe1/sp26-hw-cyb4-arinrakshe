@@ -39,6 +39,8 @@ import app.cookyourbooks.model.Unit;
 import app.cookyourbooks.model.VagueIngredient;
 import app.cookyourbooks.repository.RecipeCollectionRepository;
 import app.cookyourbooks.repository.RecipeRepository;
+import app.cookyourbooks.services.parsing.IngredientParser;
+import app.cookyourbooks.services.parsing.RecipeTextParser;
 
 /** Unit tests for {@link RecipeService} using Mockito to mock repository dependencies. */
 @ExtendWith(MockitoExtension.class)
@@ -257,8 +259,7 @@ class RecipeServiceTest {
       RecipeCollection col = createCollection("col-1", "My Col");
       givenCollectionExists(col);
 
-      Recipe result = service.importFromText("Chocolate Chip Cookies\n", col.getId());
-
+      Recipe result = service.importFromText("Chocolate Chip Cookies\nIngredients:\n", col.getId());
       assertThat(result.getTitle()).isEqualTo("Chocolate Chip Cookies");
     }
 
@@ -268,8 +269,7 @@ class RecipeServiceTest {
       RecipeCollection col = createCollection("col-1", "My Col");
       givenCollectionExists(col);
 
-      service.importFromText("Banana Bread\n", col.getId());
-
+      service.importFromText("Banana Bread\nIngredients:\n", col.getId());
       verify(recipeRepository).save(any(Recipe.class));
     }
 
@@ -279,8 +279,7 @@ class RecipeServiceTest {
       RecipeCollection col = createCollection("col-1", "My Col");
       givenCollectionExists(col);
 
-      service.importFromText("Banana Bread\n", col.getId());
-
+      service.importFromText("Banana Bread\nIngredients:\n", col.getId());
       ArgumentCaptor<RecipeCollection> captor = forClass(RecipeCollection.class);
       verify(collectionRepository).save(captor.capture());
       assertThat(captor.getValue().getRecipes()).hasSize(1);
@@ -333,6 +332,7 @@ class RecipeServiceTest {
       String text =
           """
           Quick Rice
+          Ingredients:
           Instructions:
           1. Boil water
           2. Add rice
