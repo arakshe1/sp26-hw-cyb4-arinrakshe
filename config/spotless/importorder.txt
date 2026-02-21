@@ -1,0 +1,12 @@
+java
+javax
+
+org
+
+com
+
+net
+
+app
+
+static

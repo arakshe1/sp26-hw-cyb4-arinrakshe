@@ -1,0 +1,38 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Gradle CompileJava (with Error Prone)",
+      "type": "shell",
+      // top-level command as a fallback
+      "command": "./gradlew compileJava --rerun-tasks",
+      "windows": {
+        "command": "gradlew.bat compileJava --rerun-tasks"
+      },
+      "linux": {
+        "command": "./gradlew compileJava --rerun-tasks"
+      },
+      "osx": {
+        "command": "./gradlew compileJava --rerun-tasks"
+      },
+      "group": "build",
+      "problemMatcher": [
+        {
+          "owner": "java",
+          "fileLocation": "absolute",
+          "pattern": {
+            "regexp": "^(.*\\.java):(\\d+): (warning|error): (.*)$",
+            "file": 1,
+            "line": 2,
+            "severity": 3,
+            "message": 4
+          }
+        }
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    }
+  ]
+}

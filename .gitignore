@@ -1,0 +1,20 @@
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directories
+build
+bin
+app/bin
+
+# Ignore log files
+*.log
+
+# Ignore backup files
+*.backup
+*~
+
+# Ignore IntelliJ files
+.idea/
+
+# Git hooks are managed via .githooks/ directory
+# The actual hooks in .git/hooks/ are not tracked

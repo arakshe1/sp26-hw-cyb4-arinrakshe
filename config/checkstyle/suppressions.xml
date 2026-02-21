@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE suppressions PUBLIC
+    "-//Checkstyle//DTD SuppressionFilter Configuration 1.2//EN"
+    "https://checkstyle.org/dtds/suppressions_1_2.dtd">
+
+<suppressions>
+    <!-- Suppress ParameterNumber for Jackson deserialization constructors -->
+    <suppress checks="ParameterNumber"
+             files="Cookbook\.java"
+             lines="62"/>
+    <suppress checks="ParameterNumber"
+             files="Recipe\.java"
+             lines="53"/>
+    <!-- Suppress HideUtilityClassConstructor for JUnit 5 test classes using @Nested pattern -->
+    <suppress checks="HideUtilityClassConstructor"
+             files=".*Test\.java"/>
+</suppressions>

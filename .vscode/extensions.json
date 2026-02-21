@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "vscjava.vscode-java-pack",
+        "shengchen.vscode-checkstyle",
+        "redhat.java",
+        "vscjava.vscode-gradle",
+        "vscjava.vscode-java-debug",
+        "vscjava.vscode-java-test",
+        "richardwillis.vscode-spotless-gradle"
+    ]
+}

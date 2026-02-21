@@ -1,0 +1,36 @@
+{
+    // Java Language Server settings
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.compile.nullAnalysis.mode": "disabled",
+    // Error Prone integration
+    "java.configuration.runtimes": [],
+    "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m",
+    // Enable Error Prone checks in Java Language Server
+    "java.errors.incompleteClasspath.severity": "warning",
+    // Error Prone warnings will appear in Problems panel during compilation
+    "java.maxConcurrentBuilds": 1,
+    // Editor settings - formatting handled by Spotless Gradle extension
+    "editor.formatOnSave": true,
+    "[java]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "richardwillis.vscode-spotless-gradle",
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
+    // File associations
+    "files.associations": {
+        "*.gradle": "groovy"
+    },
+    // Exclude files from search
+    "files.exclude": {
+        "**/.gradle": true,
+        "**/build": true
+    },
+    // Checkstyle extension settings (if installed)
+    "checkstyle.configuration": "${workspaceFolder}/config/checkstyle/checkstyle.xml",
+    "checkstyle.version": "10.17.0",
+    // Spotless Gradle extension settings
+    "spotlessGradle.gradleCommand": "./gradlew",
+    "spotlessGradle.format.enable": true,
+    "spotlessGradle.diagnostics.enable": true
+}
